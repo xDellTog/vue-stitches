@@ -2,6 +2,7 @@
 import { useCounterStore } from "@/stores/counter";
 import { useThemeStore } from "@/stores/theme";
 import Button from "@/components/Button.vue";
+import Styled from "@/components/Styled.vue";
 
 const store = useCounterStore();
 const themeStore = useThemeStore();
@@ -15,8 +16,12 @@ const themeStore = useThemeStore();
 
     <h3>doubleCount: {{ store.doubleCount }}</h3>
 
-    <Button @click="store.increment">increment</Button>
+    <Styled as="div" :css="{ display: 'flex', g: '$1' }">
+      <Button @click="store.increment"> Increment </Button>
 
-    <Button @click="themeStore.toggleTheme">Toggle Theme</Button>
+      <Button @click="themeStore.toggleTheme" color="primary">
+        Toggle Theme
+      </Button>
+    </Styled>
   </main>
 </template>

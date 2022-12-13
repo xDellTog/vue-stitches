@@ -2,17 +2,15 @@ import { defineStore } from "pinia";
 import { onMounted, ref, watch } from "vue";
 
 import "@/assets/normalize.css";
-import "@/assets/theme.scss";
 
-export enum AppTheme {
-  LIGHT = "light",
-  DARK = "dark",
-}
+import { globalStyles, darkTheme, lightTheme } from "@/theme/stitches.config";
 
 export const useThemeStore = defineStore("theme", () => {
-  const theme = ref<AppTheme>(AppTheme.LIGHT);
+  const theme = ref(lightTheme);
 
   onMounted(() => {
+    globalStyles();
+    
     document.body.classList.value = theme.value;
   });
 
@@ -22,10 +20,10 @@ export const useThemeStore = defineStore("theme", () => {
 
   const toggleTheme = () => {
     theme.value =
-      theme.value === AppTheme.LIGHT ? AppTheme.DARK : AppTheme.LIGHT;
+      theme.value.selector === lightTheme.selector ? darkTheme : lightTheme;
   };
 
-  const setTheme = (newTheme: AppTheme) => {
+  const setTheme = (newTheme: any) => {
     theme.value = newTheme;
   };
 

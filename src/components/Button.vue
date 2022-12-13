@@ -1,50 +1,49 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import Styled from "./Styled.vue";
 
-const props = defineProps({
-  color: String,
-});
+type ButtonColor = "light" | "primary";
 
-const color = ref<string>(props.color || "light");
+const { color = "light" } = defineProps<{
+  color?: ButtonColor;
+}>();
+
+const style = {
+  border: 0,
+  borderRadius: 8,
+  p: "$1",
+
+  defaultVariants: {
+    color: "light",
+  },
+  variants: {
+    color: {
+      light: {
+        background: "$light",
+        color: "$lightContrast",
+        "&:hover": {
+          background: "$lightTint",
+        },
+        "&:focus": {
+          background: "$lightShade",
+        },
+      },
+      primary: {
+        background: "$primary",
+        color: "$primaryContrast",
+        "&:hover": {
+          background: "$primaryTint",
+        },
+        "&:focus": {
+          background: "$primaryShade",
+        },
+      },
+    },
+  },
+};
 </script>
 
 <template>
-  <button class="bg-primary">
+  <Styled as="button" :css="style" :variants="{ color }">
     <slot />
-  </button>
+  </Styled>
 </template>
-
-<style scoped lang="scss">
-@import "../assets/space.scss";
-@import "../assets/colors.scss";
-@import "../assets/rii.scss";
-
-button {
-  color: #fff;
-  border: 0;
-  border-radius: $borderRadiusDefault;
-  padding: $space1;
-
-  // .light & {
-  //   .primary {
-  //     background: $colorPrimary;
-  //     &:hover {
-  //       background: $colorPrimaryTint;
-  //     }
-  //     &:focus {
-  //       background: $colorPrimaryShade;
-  //     }
-  //   }
-  // }
-
-  // .dark & {
-  //   background: $colorPrimary;
-  //   &:hover {
-  //     background: $colorPrimaryTint;
-  //   }
-  //   &:focus {
-  //     background: $colorPrimaryShade;
-  //   }
-  // }
-}
-</style>
