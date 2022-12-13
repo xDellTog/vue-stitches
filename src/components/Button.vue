@@ -15,36 +15,36 @@ const color = ref<string>(props.color || "light");
 </template>
 
 <style scoped lang="scss">
-@import "../assets/space.scss";
-@import "../assets/colors.scss";
-@import "../assets/rii.scss";
+@use "sass:map";
+@import "../theme/variables.scss";
 
 button {
   color: #fff;
   border: 0;
-  border-radius: $borderRadiusDefault;
-  padding: $space1;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100%;
 
-  // .light & {
-  //   .primary {
-  //     background: $colorPrimary;
-  //     &:hover {
-  //       background: $colorPrimaryTint;
-  //     }
-  //     &:focus {
-  //       background: $colorPrimaryShade;
-  //     }
-  //   }
-  // }
+  .light & {
+    color: map.get($colors, "primary-contrast");
+    background: map.get($colors, "primary");
+    &:hover {
+      background: map.get($colors, "primary-tint");
+    }
+    &:focus {
+      background: map.get($colors, "primary-shade");
+    }
+  }
 
-  // .dark & {
-  //   background: $colorPrimary;
-  //   &:hover {
-  //     background: $colorPrimaryTint;
-  //   }
-  //   &:focus {
-  //     background: $colorPrimaryShade;
-  //   }
-  // }
+  .dark & {
+    color: map.get($colors, "primary-contrast");
+    background: map.get($colors, "primary");
+    &:hover {
+      background: map.get($colors, "primary-tint");
+    }
+    &:focus {
+      background: map.get($colors, "primary-shade");
+    }
+  }
 }
 </style>

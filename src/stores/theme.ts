@@ -1,9 +1,6 @@
 import { defineStore } from "pinia";
 import { onMounted, ref, watch } from "vue";
 
-import "@/assets/normalize.css";
-import "@/assets/theme.scss";
-
 export enum AppTheme {
   LIGHT = "light",
   DARK = "dark",

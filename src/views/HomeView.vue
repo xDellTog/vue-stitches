@@ -8,15 +8,20 @@ const themeStore = useThemeStore();
 </script>
 
 <template>
-  <main>
+  <main class="container">
     <h1>Home page</h1>
 
     <h3>count: {{ store.count }}</h3>
 
     <h3>doubleCount: {{ store.doubleCount }}</h3>
 
-    <Button @click="store.increment">increment</Button>
-
-    <Button @click="themeStore.toggleTheme">Toggle Theme</Button>
+    <div class="row g-2">
+      <div class="col-12 col-md-6">
+        <Button @click="store.increment">increment</Button>
+      </div>
+      <div class="col-12 col-md-6">
+        <Button @click="themeStore.toggleTheme">Toggle Theme</Button>
+      </div>
+    </div>
   </main>
 </template>

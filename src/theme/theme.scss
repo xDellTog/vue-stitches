@@ -1,0 +1,29 @@
+@use "sass:map";
+@import "./variables.scss";
+@import "../../node_modules/bootstrap/scss/bootstrap-reboot.scss";
+@import "../../node_modules/bootstrap/scss/bootstrap-grid.scss";
+
+.light {
+  //   $colors: (
+  //     "primary": #ffaa00,
+  //     "primary-tint": #ffca5f,
+  //     "primary-shade": #ffda91,
+  //     "white": #fff,
+  //     "black": #000,
+  //   );
+
+  background: map.get($colors, "white");
+  color: map.get($colors, "black");
+}
+.dark {
+  //   $colors: (
+  //     "primary": #ffaa00,
+  //     "primary-tint": #ffca5f,
+  //     "primary-shade": #ffda91,
+  //     "white": #fff,
+  //     "black": #000,
+  //   );
+
+  background: map.get($colors, "black");
+  color: map.get($colors, "white");
+}
